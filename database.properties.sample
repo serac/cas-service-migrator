@@ -1,0 +1,5 @@
+database.dialect=org.hibernate.dialect.PostgreSQLDialect
+database.driver=org.postgresql.Driver
+database.url=jdbc:postgresql:cas
+database.username=somebody
+database.password=notthepass

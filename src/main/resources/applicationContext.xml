@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer"
+        p:location="file:database.properties"
+        p:ignoreResourceNotFound="false"
+        p:ignoreUnresolvablePlaceholders="false" />
+
+  <bean id="jsonServiceRegistryDao"
+        class="edu.vt.middleware.cas.services.JsonServiceRegistryDao"
+        p:serviceRegistryDirectory="/tmp" />
+
+  <bean id="jpaServiceRegistryDao"
+        class="org.jasig.cas.services.JpaServiceRegistryDaoImpl">
+    <property name="entityManagerFactory" ref="entityManagerFactory" />
+  </bean>
+
+  <bean id="entityManagerFactory"
+        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="jpaVendorAdapter">
+      <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="generateDdl" value="true"/>
+        <property name="showSql" value="false" />
+      </bean>
+    </property>
+    <property name="jpaProperties">
+      <props>
+        <prop key="hibernate.dialect">${database.dialect}</prop>
+        <prop key="hibernate.hbm2ddl.auto">update</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean id="dataSource"
+        class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+        p:driverClass="${database.driver}"
+        p:url="${database.url}"
+        p:username="${database.username}"
+        p:password="${database.password}" />
+
+</beans>
