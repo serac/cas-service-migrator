@@ -22,7 +22,6 @@ import org.jasig.cas.services.JpaServiceRegistryDaoImpl;
 import org.jasig.cas.services.RegisteredService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.spi.LoggerFactoryBinder;
 import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
