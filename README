@@ -1,4 +1,6 @@
-# CAS 3.x Service Registry Migrator
+CAS 3.x Service Registry Migrator
+======
+
 This is a simple Spring-based utility to convert registered service entries in
 a CAS 3.x database to JSON files with the following structure:
 
@@ -28,7 +30,9 @@ the output names are of the following form:
 
     org.jasig.cas.services.RegisteredServiceImpl-$id.json
 
-## Usage Example
+Usage Example
+------
+
 Use the database.properties.sample file to create a database.properties in the
 project root directory with connection settings appropriate for your CAS 3.x
 service registry. Then execute the following command:
