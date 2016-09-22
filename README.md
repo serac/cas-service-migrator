@@ -30,12 +30,15 @@ the output names are of the following form:
 
     org.jasig.cas.services.RegisteredServiceImpl-$id.json
 
+Configuration
+------
+1. Create a _database.properties_ in the project root directory with connection settings
+appropriate for your CAS 3.x service registry database.
+2. Update pom.xml with the dependency for the database driver for your platform.
+
 Usage Example
 ------
-
-Use the database.properties.sample file to create a database.properties in the
-project root directory with connection settings appropriate for your CAS 3.x
-service registry. Then execute the following command:
+Execute the following command:
 
     ./migrate.sh /path/to/output/directory
 
